@@ -1,0 +1,2 @@
+outputs/finetuned/
+data/raw/hf_datasets/*

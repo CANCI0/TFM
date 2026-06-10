@@ -1,0 +1,10 @@
+category,rewrites_audited,surface_swap_flagged,dropped,surface_swap_rate,drop_rate
+religion,32,16,32,0.5,1.0
+race-color,32,14,32,0.4375,1.0
+gender,32,13,32,0.4062,1.0
+socioeconomic,32,11,32,0.3438,1.0
+nationality,32,10,32,0.3125,1.0
+physical-appearance,32,6,32,0.1875,1.0
+age,7,1,7,0.1429,1.0
+sexual-orientation,14,0,14,0.0,1.0
+disability,11,0,11,0.0,1.0
