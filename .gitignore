@@ -1,2 +1,7 @@
 outputs/finetuned/
 data/raw/hf_datasets/*
+memoria/
+.env
+*.env
+__pycache__/
+*.pyc
