@@ -1,415 +1,4 @@
 {
-  "project": "tfm-bias-mitigation-llama3",
-  "base_model": "meta-llama/Llama-3.1-8B-Instruct",
-  "baseline_models": [
-    "anthropic_claude-haiku-4.5",
-    "deepseek_deepseek-v4-flash",
-    "google_gemini-3.1-flash-lite",
-    "llama3.1_latest",
-    "minimax_minimax-m3",
-    "mistralai_ministral-8b-2512",
-    "moonshotai_kimi-k2.6",
-    "qwen_qwen3.6-flash",
-    "x-ai_grok-4.3"
-  ],
-  "dataset_rows": [
-    {
-      "split": "train",
-      "rows": 714,
-      "path": "data/processed/sft_train.jsonl"
-    },
-    {
-      "split": "valid",
-      "rows": 137,
-      "path": "data/processed/sft_valid.jsonl"
-    }
-  ],
-  "impact_models": [
-    {
-      "variant": "baseline",
-      "model": "llama3.1:latest"
-    },
-    {
-      "variant": "finetuned",
-      "model": "llama3.1-sft-unbiased-q4_k_m:latest"
-    }
-  ],
-  "bias_tasks": [
-    {
-      "task": "crows_pairs",
-      "n": 180,
-      "valid": 0,
-      "invalid": 180,
-      "stereotyped": 0,
-      "anti_stereotyped": 0,
-      "bias_rate": 0.0,
-      "bias_rate_valid": NaN,
-      "format_compliance": 0.0,
-      "variant": "baseline",
-      "model": "llama3.1:latest",
-      "correct": NaN,
-      "neutral": NaN,
-      "accuracy": NaN,
-      "accuracy_valid": NaN,
-      "stereotyped_rate": NaN,
-      "stereotyped_rate_valid": NaN
-    },
-    {
-      "task": "bbq",
-      "n": 660,
-      "valid": 659,
-      "invalid": 1,
-      "stereotyped": 5,
-      "anti_stereotyped": 21,
-      "bias_rate": NaN,
-      "bias_rate_valid": NaN,
-      "format_compliance": 0.9985,
-      "variant": "baseline",
-      "model": "llama3.1:latest",
-      "correct": 259.0,
-      "neutral": 374.0,
-      "accuracy": 0.3924,
-      "accuracy_valid": 0.393,
-      "stereotyped_rate": 0.0076,
-      "stereotyped_rate_valid": 0.0076
-    },
-    {
-      "task": "crows_pairs",
-      "n": 180,
-      "valid": 18,
-      "invalid": 162,
-      "stereotyped": 13,
-      "anti_stereotyped": 5,
-      "bias_rate": 0.0722,
-      "bias_rate_valid": 0.7222,
-      "format_compliance": 0.1,
-      "variant": "finetuned",
-      "model": "llama3.1-sft-unbiased-q4_k_m:latest",
-      "correct": NaN,
-      "neutral": NaN,
-      "accuracy": NaN,
-      "accuracy_valid": NaN,
-      "stereotyped_rate": NaN,
-      "stereotyped_rate_valid": NaN
-    },
-    {
-      "task": "bbq",
-      "n": 660,
-      "valid": 614,
-      "invalid": 46,
-      "stereotyped": 8,
-      "anti_stereotyped": 28,
-      "bias_rate": NaN,
-      "bias_rate_valid": NaN,
-      "format_compliance": 0.9303,
-      "variant": "finetuned",
-      "model": "llama3.1-sft-unbiased-q4_k_m:latest",
-      "correct": 252.0,
-      "neutral": 326.0,
-      "accuracy": 0.3818,
-      "accuracy_valid": 0.4104,
-      "stereotyped_rate": 0.0121,
-      "stereotyped_rate_valid": 0.013
-    }
-  ],
-  "bias_comparison": [
-    {
-      "task": "crows_pairs",
-      "metric": "bias_rate_total",
-      "baseline": 0.0,
-      "finetuned": 0.0722,
-      "delta": 0.0722
-    },
-    {
-      "task": "crows_pairs",
-      "metric": "bias_rate_valid",
-      "baseline": NaN,
-      "finetuned": 0.7222,
-      "delta": NaN
-    },
-    {
-      "task": "crows_pairs",
-      "metric": "format_compliance",
-      "baseline": 0.0,
-      "finetuned": 0.1,
-      "delta": 0.1
-    },
-    {
-      "task": "crows_pairs",
-      "metric": "stereotyped_count",
-      "baseline": 0.0,
-      "finetuned": 13.0,
-      "delta": 13.0
-    },
-    {
-      "task": "crows_pairs",
-      "metric": "anti_stereotyped_count",
-      "baseline": 0.0,
-      "finetuned": 5.0,
-      "delta": 5.0
-    },
-    {
-      "task": "bbq",
-      "metric": "stereotyped_rate_total",
-      "baseline": 0.0076,
-      "finetuned": 0.0121,
-      "delta": 0.0045
-    },
-    {
-      "task": "bbq",
-      "metric": "stereotyped_rate_valid",
-      "baseline": 0.0076,
-      "finetuned": 0.013,
-      "delta": 0.0054
-    },
-    {
-      "task": "bbq",
-      "metric": "accuracy_total",
-      "baseline": 0.3924,
-      "finetuned": 0.3818,
-      "delta": -0.0106
-    },
-    {
-      "task": "bbq",
-      "metric": "accuracy_valid",
-      "baseline": 0.393,
-      "finetuned": 0.4104,
-      "delta": 0.0174
-    },
-    {
-      "task": "bbq",
-      "metric": "format_compliance",
-      "baseline": 0.9985,
-      "finetuned": 0.9303,
-      "delta": -0.0682
-    },
-    {
-      "task": "bbq",
-      "metric": "stereotyped_count",
-      "baseline": 5.0,
-      "finetuned": 8.0,
-      "delta": 3.0
-    },
-    {
-      "task": "bbq",
-      "metric": "anti_stereotyped_count",
-      "baseline": 21.0,
-      "finetuned": 28.0,
-      "delta": 7.0
-    },
-    {
-      "task": "bbq",
-      "metric": "neutral_count",
-      "baseline": 374.0,
-      "finetuned": 326.0,
-      "delta": -48.0
-    },
-    {
-      "task": "bbq",
-      "metric": "correct_count",
-      "baseline": 259.0,
-      "finetuned": 252.0,
-      "delta": -7.0
-    }
-  ],
-  "impact_tasks": [
-    {
-      "task": "mmlu",
-      "n": 1140,
-      "valid": 1082,
-      "invalid": 58,
-      "correct": 694,
-      "accuracy": 0.6088,
-      "accuracy_valid": 0.6414,
-      "format_compliance": 0.9491,
-      "variant": "baseline",
-      "model": "llama3.1:latest"
-    },
-    {
-      "task": "hellaswag",
-      "n": 2320,
-      "valid": 2308,
-      "invalid": 12,
-      "correct": 1302,
-      "accuracy": 0.5612,
-      "accuracy_valid": 0.5641,
-      "format_compliance": 0.9948,
-      "variant": "baseline",
-      "model": "llama3.1:latest"
-    },
-    {
-      "task": "mmlu",
-      "n": 1140,
-      "valid": 1072,
-      "invalid": 68,
-      "correct": 672,
-      "accuracy": 0.5895,
-      "accuracy_valid": 0.6269,
-      "format_compliance": 0.9404,
-      "variant": "finetuned",
-      "model": "llama3.1-sft-unbiased-q4_k_m:latest"
-    },
-    {
-      "task": "hellaswag",
-      "n": 2320,
-      "valid": 2081,
-      "invalid": 239,
-      "correct": 1061,
-      "accuracy": 0.4573,
-      "accuracy_valid": 0.5099,
-      "format_compliance": 0.897,
-      "variant": "finetuned",
-      "model": "llama3.1-sft-unbiased-q4_k_m:latest"
-    }
-  ],
-  "impact_comparison": [
-    {
-      "task": "hellaswag",
-      "baseline_accuracy": 0.5612,
-      "finetuned_accuracy": 0.4573,
-      "delta_accuracy": -0.1039,
-      "baseline_accuracy_valid": 0.5641,
-      "finetuned_accuracy_valid": 0.5099,
-      "delta_accuracy_valid": -0.0542,
-      "baseline_format_compliance": 0.9948,
-      "finetuned_format_compliance": 0.897,
-      "delta_format_compliance": -0.0978,
-      "baseline_correct": 1302,
-      "finetuned_correct": 1061,
-      "delta_correct": -241
-    },
-    {
-      "task": "mmlu",
-      "baseline_accuracy": 0.6088,
-      "finetuned_accuracy": 0.5895,
-      "delta_accuracy": -0.0193,
-      "baseline_accuracy_valid": 0.6414,
-      "finetuned_accuracy_valid": 0.6269,
-      "delta_accuracy_valid": -0.0145,
-      "baseline_format_compliance": 0.9491,
-      "finetuned_format_compliance": 0.9404,
-      "delta_format_compliance": -0.0087,
-      "baseline_correct": 694,
-      "finetuned_correct": 672,
-      "delta_correct": -22
-    }
-  ],
-  "rewrite_audit_summary": [
-    {
-      "category": "religion",
-      "rewrites_audited": 32,
-      "surface_swap_flagged": 16,
-      "dropped": 32,
-      "surface_swap_rate": 0.5,
-      "drop_rate": 1.0
-    },
-    {
-      "category": "race-color",
-      "rewrites_audited": 32,
-      "surface_swap_flagged": 14,
-      "dropped": 32,
-      "surface_swap_rate": 0.4375,
-      "drop_rate": 1.0
-    },
-    {
-      "category": "gender",
-      "rewrites_audited": 32,
-      "surface_swap_flagged": 13,
-      "dropped": 32,
-      "surface_swap_rate": 0.4062,
-      "drop_rate": 1.0
-    },
-    {
-      "category": "socioeconomic",
-      "rewrites_audited": 32,
-      "surface_swap_flagged": 11,
-      "dropped": 32,
-      "surface_swap_rate": 0.3438,
-      "drop_rate": 1.0
-    },
-    {
-      "category": "nationality",
-      "rewrites_audited": 32,
-      "surface_swap_flagged": 10,
-      "dropped": 32,
-      "surface_swap_rate": 0.3125,
-      "drop_rate": 1.0
-    },
-    {
-      "category": "physical-appearance",
-      "rewrites_audited": 32,
-      "surface_swap_flagged": 6,
-      "dropped": 32,
-      "surface_swap_rate": 0.1875,
-      "drop_rate": 1.0
-    },
-    {
-      "category": "age",
-      "rewrites_audited": 7,
-      "surface_swap_flagged": 1,
-      "dropped": 7,
-      "surface_swap_rate": 0.1429,
-      "drop_rate": 1.0
-    },
-    {
-      "category": "sexual-orientation",
-      "rewrites_audited": 14,
-      "surface_swap_flagged": 0,
-      "dropped": 14,
-      "surface_swap_rate": 0.0,
-      "drop_rate": 1.0
-    },
-    {
-      "category": "disability",
-      "rewrites_audited": 11,
-      "surface_swap_flagged": 0,
-      "dropped": 11,
-      "surface_swap_rate": 0.0,
-      "drop_rate": 1.0
-    }
-  ],
-  "final_summary_table": [
-    {
-      "area": "bias",
-      "task": "crows_pairs",
-      "metric": "CrowS-Pairs bias rate",
-      "baseline": 0.0,
-      "finetuned": 0.0722,
-      "delta": 0.0722
-    },
-    {
-      "area": "bias",
-      "task": "bbq",
-      "metric": "BBQ stereotyped rate",
-      "baseline": 0.0076,
-      "finetuned": 0.0121,
-      "delta": 0.0045
-    },
-    {
-      "area": "bias",
-      "task": "bbq",
-      "metric": "BBQ accuracy",
-      "baseline": 0.3924,
-      "finetuned": 0.3818,
-      "delta": -0.0106
-    },
-    {
-      "area": "capability",
-      "task": "mmlu",
-      "metric": "MMLU accuracy",
-      "baseline": 0.6088,
-      "finetuned": 0.5895,
-      "delta": -0.0193
-    },
-    {
-      "area": "capability",
-      "task": "hellaswag",
-      "metric": "HellaSwag accuracy",
-      "baseline": 0.5612,
-      "finetuned": 0.4573,
-      "delta": -0.1039
-    }
-  ],
   "unified_metrics": [
     {
       "task": "crows_pairs",
@@ -494,6 +83,450 @@
       "desired_rate_total": 0.8758,
       "ideal_stereotyped_rate": 0.0,
       "ideal_desired_rate": 1.0
+    }
+  ],
+  "crows_category_metrics": [
+    {
+      "task": "crows_pairs",
+      "category": "age",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 55,
+      "stereotyped_count": 32,
+      "desired_count": 23,
+      "stereotyped_rate": 0.5333,
+      "desired_rate": 0.3833
+    },
+    {
+      "task": "crows_pairs",
+      "category": "disability",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 52,
+      "stereotyped_count": 32,
+      "desired_count": 20,
+      "stereotyped_rate": 0.5333,
+      "desired_rate": 0.3333
+    },
+    {
+      "task": "crows_pairs",
+      "category": "gender",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 55,
+      "stereotyped_count": 34,
+      "desired_count": 21,
+      "stereotyped_rate": 0.5667,
+      "desired_rate": 0.35
+    },
+    {
+      "task": "crows_pairs",
+      "category": "nationality",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 55,
+      "stereotyped_count": 32,
+      "desired_count": 23,
+      "stereotyped_rate": 0.5333,
+      "desired_rate": 0.3833
+    },
+    {
+      "task": "crows_pairs",
+      "category": "physical-appearance",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 59,
+      "stereotyped_count": 32,
+      "desired_count": 27,
+      "stereotyped_rate": 0.5333,
+      "desired_rate": 0.45
+    },
+    {
+      "task": "crows_pairs",
+      "category": "race-color",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 40,
+      "stereotyped_count": 19,
+      "desired_count": 21,
+      "stereotyped_rate": 0.3167,
+      "desired_rate": 0.35
+    },
+    {
+      "task": "crows_pairs",
+      "category": "religion",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 42,
+      "stereotyped_count": 19,
+      "desired_count": 23,
+      "stereotyped_rate": 0.3167,
+      "desired_rate": 0.3833
+    },
+    {
+      "task": "crows_pairs",
+      "category": "sexual-orientation",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 41,
+      "stereotyped_count": 23,
+      "desired_count": 18,
+      "stereotyped_rate": 0.3833,
+      "desired_rate": 0.3
+    },
+    {
+      "task": "crows_pairs",
+      "category": "socioeconomic",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 55,
+      "stereotyped_count": 36,
+      "desired_count": 19,
+      "stereotyped_rate": 0.6,
+      "desired_rate": 0.3167
+    },
+    {
+      "task": "crows_pairs",
+      "category": "age",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 34,
+      "desired_count": 26,
+      "stereotyped_rate": 0.5667,
+      "desired_rate": 0.4333
+    },
+    {
+      "task": "crows_pairs",
+      "category": "disability",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 33,
+      "desired_count": 27,
+      "stereotyped_rate": 0.55,
+      "desired_rate": 0.45
+    },
+    {
+      "task": "crows_pairs",
+      "category": "gender",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 59,
+      "stereotyped_count": 34,
+      "desired_count": 25,
+      "stereotyped_rate": 0.5667,
+      "desired_rate": 0.4167
+    },
+    {
+      "task": "crows_pairs",
+      "category": "nationality",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 33,
+      "desired_count": 27,
+      "stereotyped_rate": 0.55,
+      "desired_rate": 0.45
+    },
+    {
+      "task": "crows_pairs",
+      "category": "physical-appearance",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 30,
+      "desired_count": 30,
+      "stereotyped_rate": 0.5,
+      "desired_rate": 0.5
+    },
+    {
+      "task": "crows_pairs",
+      "category": "race-color",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 31,
+      "desired_count": 29,
+      "stereotyped_rate": 0.5167,
+      "desired_rate": 0.4833
+    },
+    {
+      "task": "crows_pairs",
+      "category": "religion",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 28,
+      "desired_count": 32,
+      "stereotyped_rate": 0.4667,
+      "desired_rate": 0.5333
+    },
+    {
+      "task": "crows_pairs",
+      "category": "sexual-orientation",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 37,
+      "desired_count": 23,
+      "stereotyped_rate": 0.6167,
+      "desired_rate": 0.3833
+    },
+    {
+      "task": "crows_pairs",
+      "category": "socioeconomic",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 42,
+      "desired_count": 18,
+      "stereotyped_rate": 0.7,
+      "desired_rate": 0.3
+    }
+  ],
+  "bbq_category_metrics": [
+    {
+      "task": "bbq",
+      "category": "age",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 3,
+      "desired_count": 49,
+      "stereotyped_rate": 0.05,
+      "desired_rate": 0.8167
+    },
+    {
+      "task": "bbq",
+      "category": "disability-status",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 3,
+      "desired_count": 51,
+      "stereotyped_rate": 0.05,
+      "desired_rate": 0.85
+    },
+    {
+      "task": "bbq",
+      "category": "gender",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 1,
+      "desired_count": 52,
+      "stereotyped_rate": 0.0167,
+      "desired_rate": 0.8667
+    },
+    {
+      "task": "bbq",
+      "category": "nationality",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 55,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9167
+    },
+    {
+      "task": "bbq",
+      "category": "physical-appearance",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 3,
+      "desired_count": 45,
+      "stereotyped_rate": 0.05,
+      "desired_rate": 0.75
+    },
+    {
+      "task": "bbq",
+      "category": "race-color",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 54,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9
+    },
+    {
+      "task": "bbq",
+      "category": "race-x-gender",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 56,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9333
+    },
+    {
+      "task": "bbq",
+      "category": "race-x-ses",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 58,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9667
+    },
+    {
+      "task": "bbq",
+      "category": "religion",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 57,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.95
+    },
+    {
+      "task": "bbq",
+      "category": "sexual-orientation",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 53,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.8833
+    },
+    {
+      "task": "bbq",
+      "category": "socioeconomic",
+      "variant": "baseline",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 57,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.95
+    },
+    {
+      "task": "bbq",
+      "category": "age",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 6,
+      "desired_count": 52,
+      "stereotyped_rate": 0.1,
+      "desired_rate": 0.8667
+    },
+    {
+      "task": "bbq",
+      "category": "disability-status",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 2,
+      "desired_count": 53,
+      "stereotyped_rate": 0.0333,
+      "desired_rate": 0.8833
+    },
+    {
+      "task": "bbq",
+      "category": "gender",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 55,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9167
+    },
+    {
+      "task": "bbq",
+      "category": "nationality",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 56,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9333
+    },
+    {
+      "task": "bbq",
+      "category": "physical-appearance",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 50,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.8333
+    },
+    {
+      "task": "bbq",
+      "category": "race-color",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 56,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9333
+    },
+    {
+      "task": "bbq",
+      "category": "race-x-gender",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 56,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9333
+    },
+    {
+      "task": "bbq",
+      "category": "race-x-ses",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 59,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9833
+    },
+    {
+      "task": "bbq",
+      "category": "religion",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 2,
+      "desired_count": 54,
+      "stereotyped_rate": 0.0333,
+      "desired_rate": 0.9
+    },
+    {
+      "task": "bbq",
+      "category": "sexual-orientation",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 57,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.95
+    },
+    {
+      "task": "bbq",
+      "category": "socioeconomic",
+      "variant": "finetuned",
+      "n": 60,
+      "valid": 60,
+      "stereotyped_count": 0,
+      "desired_count": 59,
+      "stereotyped_rate": 0.0,
+      "desired_rate": 0.9833
     }
   ],
   "crows_category_comparison": [
@@ -944,61 +977,5 @@
       "significant_p05": true
     }
   ],
-  "crows_ab_limitation": "The current evaluation protocol randomises whether the stereotyped CrowS-Pairs sentence appears as option A or B for each item using a fixed seed. This removes systematic ordering bias, but residual preference for the first option may still affect the measured stereotyped rate and should be interpreted as a remaining limitation of the benchmark.",
-  "qlora_config": {
-    "model": {
-      "base_model": "meta-llama/Llama-3.1-8B-Instruct",
-      "exported_model": "llama3.1-sft-unbiased-q4_k_m",
-      "quantization": "q4_k_m (GGUF, 4-bit NF4)",
-      "training_precision": "bf16 (falls back to fp16 if bf16 not available)"
-    },
-    "lora": {
-      "r": 16,
-      "lora_alpha": 32,
-      "lora_dropout": 0.05,
-      "target_modules": [
-        "q_proj",
-        "k_proj",
-        "v_proj",
-        "o_proj",
-        "gate_proj",
-        "up_proj",
-        "down_proj"
-      ],
-      "bias": "none",
-      "task_type": "CAUSAL_LM"
-    },
-    "training": {
-      "num_train_epochs": 3,
-      "per_device_train_batch_size": 2,
-      "gradient_accumulation_steps": 4,
-      "effective_batch_size": 8,
-      "learning_rate": 1.5e-05,
-      "warmup_ratio": 0.08,
-      "optimizer": "paged_adamw_8bit",
-      "lr_scheduler": "linear",
-      "max_seq_length": 1024,
-      "gradient_checkpointing": true,
-      "seed": 42,
-      "data_seed": 42
-    },
-    "dataset": {
-      "train_file": "data/processed/sft_train.jsonl",
-      "valid_file": "data/processed/sft_valid.jsonl",
-      "train_samples": 714,
-      "valid_samples": 137,
-      "total_samples": 851,
-      "format": "Alpaca-style instruction/response, completion-only training"
-    },
-    "hyperparameter_selection": {
-      "method": "heuristic based on literature defaults and compute constraints",
-      "notes": [
-        "lora_r=16 and lora_alpha=32 follow common QLoRA recipes for instruction-following tasks",
-        "learning_rate=1.5e-5 is conservative to avoid catastrophic forgetting",
-        "batch_size=2 with gradient_accumulation=4 gives effective batch=8 under 24GB VRAM constraint",
-        "warmup_ratio=0.08 stabilises early training steps",
-        "3 epochs chosen as a balance between convergence and overfitting on the small SFT dataset"
-      ]
-    }
-  }
+  "crows_ab_limitation": "The current evaluation protocol randomises whether the stereotyped CrowS-Pairs sentence appears as option A or B for each item using a fixed seed. This removes systematic ordering bias, but residual preference for the first option may still affect the measured stereotyped rate and should be interpreted as a remaining limitation of the benchmark."
 }

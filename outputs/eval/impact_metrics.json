@@ -1,0 +1,287 @@
+{
+  "transport": "ollama",
+  "base_url": "http://127.0.0.1:11434",
+  "crows_holdout": "data/processed/eval_holdout_crows.csv",
+  "bbq_holdout": "data/processed/eval_holdout_bbq.csv",
+  "bias_samples_per_category": 60,
+  "capability_sample_size": 20,
+  "seed": 42,
+  "models": [
+    {
+      "variant": "baseline",
+      "model": "llama3.1:latest"
+    },
+    {
+      "variant": "finetuned",
+      "model": "llama3.1-sft-unbiased-q4_k_m:latest"
+    }
+  ],
+  "bias_tasks": [
+    "crows_pairs",
+    "bbq"
+  ],
+  "impact_tasks": [
+    "mmlu",
+    "hellaswag"
+  ],
+  "bias_metrics": [
+    {
+      "task": "crows_pairs",
+      "n": 180,
+      "valid": 0,
+      "invalid": 180,
+      "stereotyped": 0,
+      "anti_stereotyped": 0,
+      "bias_rate": 0.0,
+      "bias_rate_valid": NaN,
+      "format_compliance": 0.0,
+      "variant": "baseline",
+      "model": "llama3.1:latest",
+      "correct": NaN,
+      "neutral": NaN,
+      "accuracy": NaN,
+      "accuracy_valid": NaN,
+      "stereotyped_rate": NaN,
+      "stereotyped_rate_valid": NaN
+    },
+    {
+      "task": "bbq",
+      "n": 660,
+      "valid": 659,
+      "invalid": 1,
+      "stereotyped": 5,
+      "anti_stereotyped": 21,
+      "bias_rate": NaN,
+      "bias_rate_valid": NaN,
+      "format_compliance": 0.9985,
+      "variant": "baseline",
+      "model": "llama3.1:latest",
+      "correct": 259.0,
+      "neutral": 374.0,
+      "accuracy": 0.3924,
+      "accuracy_valid": 0.393,
+      "stereotyped_rate": 0.0076,
+      "stereotyped_rate_valid": 0.0076
+    },
+    {
+      "task": "crows_pairs",
+      "n": 180,
+      "valid": 18,
+      "invalid": 162,
+      "stereotyped": 13,
+      "anti_stereotyped": 5,
+      "bias_rate": 0.0722,
+      "bias_rate_valid": 0.7222,
+      "format_compliance": 0.1,
+      "variant": "finetuned",
+      "model": "llama3.1-sft-unbiased-q4_k_m:latest",
+      "correct": NaN,
+      "neutral": NaN,
+      "accuracy": NaN,
+      "accuracy_valid": NaN,
+      "stereotyped_rate": NaN,
+      "stereotyped_rate_valid": NaN
+    },
+    {
+      "task": "bbq",
+      "n": 660,
+      "valid": 614,
+      "invalid": 46,
+      "stereotyped": 8,
+      "anti_stereotyped": 28,
+      "bias_rate": NaN,
+      "bias_rate_valid": NaN,
+      "format_compliance": 0.9303,
+      "variant": "finetuned",
+      "model": "llama3.1-sft-unbiased-q4_k_m:latest",
+      "correct": 252.0,
+      "neutral": 326.0,
+      "accuracy": 0.3818,
+      "accuracy_valid": 0.4104,
+      "stereotyped_rate": 0.0121,
+      "stereotyped_rate_valid": 0.013
+    }
+  ],
+  "bias_comparison": [
+    {
+      "task": "crows_pairs",
+      "metric": "bias_rate_total",
+      "baseline": 0.0,
+      "finetuned": 0.0722,
+      "delta": 0.0722
+    },
+    {
+      "task": "crows_pairs",
+      "metric": "bias_rate_valid",
+      "baseline": NaN,
+      "finetuned": 0.7222,
+      "delta": NaN
+    },
+    {
+      "task": "crows_pairs",
+      "metric": "format_compliance",
+      "baseline": 0.0,
+      "finetuned": 0.1,
+      "delta": 0.1
+    },
+    {
+      "task": "crows_pairs",
+      "metric": "stereotyped_count",
+      "baseline": 0.0,
+      "finetuned": 13.0,
+      "delta": 13.0
+    },
+    {
+      "task": "crows_pairs",
+      "metric": "anti_stereotyped_count",
+      "baseline": 0.0,
+      "finetuned": 5.0,
+      "delta": 5.0
+    },
+    {
+      "task": "bbq",
+      "metric": "stereotyped_rate_total",
+      "baseline": 0.0076,
+      "finetuned": 0.0121,
+      "delta": 0.0045
+    },
+    {
+      "task": "bbq",
+      "metric": "stereotyped_rate_valid",
+      "baseline": 0.0076,
+      "finetuned": 0.013,
+      "delta": 0.0054
+    },
+    {
+      "task": "bbq",
+      "metric": "accuracy_total",
+      "baseline": 0.3924,
+      "finetuned": 0.3818,
+      "delta": -0.0106
+    },
+    {
+      "task": "bbq",
+      "metric": "accuracy_valid",
+      "baseline": 0.393,
+      "finetuned": 0.4104,
+      "delta": 0.0174
+    },
+    {
+      "task": "bbq",
+      "metric": "format_compliance",
+      "baseline": 0.9985,
+      "finetuned": 0.9303,
+      "delta": -0.0682
+    },
+    {
+      "task": "bbq",
+      "metric": "stereotyped_count",
+      "baseline": 5.0,
+      "finetuned": 8.0,
+      "delta": 3.0
+    },
+    {
+      "task": "bbq",
+      "metric": "anti_stereotyped_count",
+      "baseline": 21.0,
+      "finetuned": 28.0,
+      "delta": 7.0
+    },
+    {
+      "task": "bbq",
+      "metric": "neutral_count",
+      "baseline": 374.0,
+      "finetuned": 326.0,
+      "delta": -48.0
+    },
+    {
+      "task": "bbq",
+      "metric": "correct_count",
+      "baseline": 259.0,
+      "finetuned": 252.0,
+      "delta": -7.0
+    }
+  ],
+  "metrics": [
+    {
+      "task": "mmlu",
+      "n": 1140,
+      "valid": 1082,
+      "invalid": 58,
+      "correct": 694,
+      "accuracy": 0.6088,
+      "accuracy_valid": 0.6414,
+      "format_compliance": 0.9491,
+      "variant": "baseline",
+      "model": "llama3.1:latest"
+    },
+    {
+      "task": "hellaswag",
+      "n": 2320,
+      "valid": 2308,
+      "invalid": 12,
+      "correct": 1302,
+      "accuracy": 0.5612,
+      "accuracy_valid": 0.5641,
+      "format_compliance": 0.9948,
+      "variant": "baseline",
+      "model": "llama3.1:latest"
+    },
+    {
+      "task": "mmlu",
+      "n": 1140,
+      "valid": 1072,
+      "invalid": 68,
+      "correct": 672,
+      "accuracy": 0.5895,
+      "accuracy_valid": 0.6269,
+      "format_compliance": 0.9404,
+      "variant": "finetuned",
+      "model": "llama3.1-sft-unbiased-q4_k_m:latest"
+    },
+    {
+      "task": "hellaswag",
+      "n": 2320,
+      "valid": 2081,
+      "invalid": 239,
+      "correct": 1061,
+      "accuracy": 0.4573,
+      "accuracy_valid": 0.5099,
+      "format_compliance": 0.897,
+      "variant": "finetuned",
+      "model": "llama3.1-sft-unbiased-q4_k_m:latest"
+    }
+  ],
+  "comparison": [
+    {
+      "task": "hellaswag",
+      "baseline_accuracy": 0.5612,
+      "finetuned_accuracy": 0.4573,
+      "delta_accuracy": -0.1039,
+      "baseline_accuracy_valid": 0.5641,
+      "finetuned_accuracy_valid": 0.5099,
+      "delta_accuracy_valid": -0.0542,
+      "baseline_format_compliance": 0.9948,
+      "finetuned_format_compliance": 0.897,
+      "delta_format_compliance": -0.0978,
+      "baseline_correct": 1302,
+      "finetuned_correct": 1061,
+      "delta_correct": -241
+    },
+    {
+      "task": "mmlu",
+      "baseline_accuracy": 0.6088,
+      "finetuned_accuracy": 0.5895,
+      "delta_accuracy": -0.0193,
+      "baseline_accuracy_valid": 0.6414,
+      "finetuned_accuracy_valid": 0.6269,
+      "delta_accuracy_valid": -0.0145,
+      "baseline_format_compliance": 0.9491,
+      "finetuned_format_compliance": 0.9404,
+      "delta_format_compliance": -0.0087,
+      "baseline_correct": 694,
+      "finetuned_correct": 672,
+      "delta_correct": -22
+    }
+  ]
+}
