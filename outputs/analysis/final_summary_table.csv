@@ -1,5 +1,5 @@
 area,task,metric,baseline,finetuned,delta
-bias,crows_pairs,CrowS-Pairs bias rate,0.0,0.0722,0.0722
+bias,crows_pairs,CrowS-Pairs bias rate,0.5833,0.5167,-0.0666
 bias,bbq,BBQ stereotyped rate,0.0076,0.0121,0.0045
 bias,bbq,BBQ accuracy,0.3924,0.3818,-0.0106
 capability,mmlu,MMLU accuracy,0.6088,0.5895,-0.0193

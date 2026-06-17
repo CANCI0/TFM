@@ -28,21 +28,21 @@
     {
       "task": "crows_pairs",
       "n": 180,
-      "valid": 0,
-      "invalid": 180,
-      "stereotyped": 0,
-      "anti_stereotyped": 0,
-      "bias_rate": 0.0,
-      "bias_rate_valid": NaN,
-      "format_compliance": 0.0,
+      "valid": 170,
+      "invalid": 10,
+      "stereotyped": 105,
+      "anti_stereotyped": 65,
+      "bias_rate": 0.5833,
+      "bias_rate_valid": 0.6176,
+      "format_compliance": 0.9444,
       "variant": "baseline",
       "model": "llama3.1:latest",
-      "correct": NaN,
-      "neutral": NaN,
-      "accuracy": NaN,
-      "accuracy_valid": NaN,
-      "stereotyped_rate": NaN,
-      "stereotyped_rate_valid": NaN
+      "correct": null,
+      "neutral": null,
+      "accuracy": null,
+      "accuracy_valid": null,
+      "stereotyped_rate": null,
+      "stereotyped_rate_valid": null
     },
     {
       "task": "bbq",
@@ -66,21 +66,21 @@
     {
       "task": "crows_pairs",
       "n": 180,
-      "valid": 18,
-      "invalid": 162,
-      "stereotyped": 13,
-      "anti_stereotyped": 5,
-      "bias_rate": 0.0722,
-      "bias_rate_valid": 0.7222,
-      "format_compliance": 0.1,
+      "valid": 162,
+      "invalid": 18,
+      "stereotyped": 93,
+      "anti_stereotyped": 69,
+      "bias_rate": 0.5167,
+      "bias_rate_valid": 0.5741,
+      "format_compliance": 0.9,
       "variant": "finetuned",
       "model": "llama3.1-sft-unbiased-q4_k_m:latest",
-      "correct": NaN,
-      "neutral": NaN,
-      "accuracy": NaN,
-      "accuracy_valid": NaN,
-      "stereotyped_rate": NaN,
-      "stereotyped_rate_valid": NaN
+      "correct": null,
+      "neutral": null,
+      "accuracy": null,
+      "accuracy_valid": null,
+      "stereotyped_rate": null,
+      "stereotyped_rate_valid": null
     },
     {
       "task": "bbq",
@@ -106,37 +106,37 @@
     {
       "task": "crows_pairs",
       "metric": "bias_rate_total",
-      "baseline": 0.0,
-      "finetuned": 0.0722,
-      "delta": 0.0722
+      "baseline": 0.5833,
+      "finetuned": 0.5167,
+      "delta": -0.0666
     },
     {
       "task": "crows_pairs",
       "metric": "bias_rate_valid",
-      "baseline": NaN,
-      "finetuned": 0.7222,
-      "delta": NaN
+      "baseline": 0.6176,
+      "finetuned": 0.5741,
+      "delta": -0.0435
     },
     {
       "task": "crows_pairs",
       "metric": "format_compliance",
-      "baseline": 0.0,
-      "finetuned": 0.1,
-      "delta": 0.1
+      "baseline": 0.9444,
+      "finetuned": 0.9,
+      "delta": -0.0444
     },
     {
       "task": "crows_pairs",
       "metric": "stereotyped_count",
-      "baseline": 0.0,
-      "finetuned": 13.0,
-      "delta": 13.0
+      "baseline": 105.0,
+      "finetuned": 93.0,
+      "delta": -12.0
     },
     {
       "task": "crows_pairs",
       "metric": "anti_stereotyped_count",
-      "baseline": 0.0,
-      "finetuned": 5.0,
-      "delta": 5.0
+      "baseline": 65.0,
+      "finetuned": 69.0,
+      "delta": 4.0
     },
     {
       "task": "bbq",
